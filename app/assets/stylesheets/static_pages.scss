@@ -1,0 +1,283 @@
+// Place all the styles related to the staticPages controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+/* =========== RESET =========== */
+* {
+	margin: 0;
+	padding: 0;	
+}
+
+
+/* ======== Farbpalette ======== */
+
+	/* Grüntöne */
+		
+		
+		
+		
+		/*#19421a*/
+		
+
+	/* Brauntöne */
+		/*#373128*/
+
+	/*Schwarztöne */
+		/*#292929*/
+
+	/* Schrift */
+	/* #666 */
+
+/* ====== Eigene Styles ======== */
+
+/* ====== Kopfbereich allgemein */
+#kopfbereich {
+	position: fixed;
+	z-index: 1000;
+	width: 100%;
+	padding: 5px 0;
+	/*background-color: #19421a;*/
+	background: rgba(25, 66, 26, 0);
+	box-shadow: 0px 2px 25px #373128;
+	/*opacity: 0.9;*/
+}
+
+#kopfbereich:hover {
+	background: rgba(25, 66, 26, 1);
+}
+
+#kopfbereich.header-scrolled {
+	background: rgba(25, 66, 26, 0.2);
+}
+
+#kopfbereich.header-scrolled:hover {
+	background: rgba(25, 66, 26, 1);
+	background: #19421a;
+}
+
+/*========== Logo ========== */
+
+
+/*========== Navigation ========= */ 
+
+.topnav {
+	background: transparent;
+	margin-bottom: 0;
+}
+
+.topnav a.icon {
+	float: right;
+	margin-right: 10px;
+}
+
+.topnav a:not(.icon){
+	clear: both;
+}
+
+@media screen and (max-width: 768px){
+	.topnav a:not(.icon){
+		display: none;
+	}
+
+	.topnav.opened a {
+		display: block;
+	}
+
+	/*Menu icon*/
+	.bar1, .bar2, .bar3 {
+		height: 5px;
+		width: 35px;
+		background-color: #fff;
+		margin: 6px 0;
+		opacity: 1;
+		/* Mittels der property transition lassen sich der Value einer property über einen bestimmten Zeitraum verändern/ animieren. Hierfür ist es wichtig, dass die transition property immer dem Ausgangszustand zugewiesen wird. Als erster Wert erhält die property transition immer die property, die sich verändern soll, der zweite Wert gibt die Dauer der Veränderung an, der dritte Werte regelt die Verlaufskurve der Veränderung, als vierter Wert könnte noch eine Verzögerung angegeben werden mit der der Effekt, d.h. die Veränderung beginnen soll.*/
+		transition: transform 0.3s ease, opacity 0.3s ease;
+	}
+	
+	/*Änderung des Menü icons - Die property transform führt Änderungen an einem Element durch, mittels des Werts rotate wird das Element um eine bestimmte Gradzahl gedreht, translate führt zu einer Verschiebung des Elements entlang der x-Achse (erster Wert) und der y-Achse (zweiter Wert)*/
+	.icon.change .bar1 {
+		-webkit-transform: rotate(-45deg) translate(-9px, 6px);
+		-ms-transform: rotate(-45deg) translate(-9px, 6px);
+		-o-transform: rotate(-45deg) translate(-9px, 6px);
+		transform: rotate(-45deg) translate(-9px, 6px);
+	}
+
+	/* Ausblenden des mittleren Balken. Statt display: none wird opacity: 0 verwendet, um das Aufrutschen des dritten Balkens zu verhindenr */
+	.icon.change .bar2 {
+		opacity: 0;
+	}
+
+	.icon.change .bar3 {
+		-webkit-transform: rotate(45deg) translate(-8px, -8px);
+		-ms-transform: rotate(45deg) translate(-8px, -8px);
+		-o-transform: rotate(45deg) translate(-8px, -8px);
+		transform: rotate(45deg) translate(-8px, -8px);
+	}
+
+}
+
+@media screen and (min-width: 768px){
+	.topnav {
+		float: right;
+	}
+
+	.topnav a.icon {
+		display: none;
+	}
+
+	.topnav li {
+		display: inline-block;
+	}
+
+	.topnav a {
+		display: inline-block;
+		padding: 10px;
+	}
+
+}
+
+.topnav li {
+	list-style: none;
+}
+
+.topnav a {
+	color: #fff;
+	font-size: 26px;
+	text-decoration: none;
+}
+
+.topnav a:not(.icon):hover  {
+	background-color: #fff;
+	color: #19421a;
+	font-weight: 600;
+}
+
+/*============= Slideshow ==============*/ 
+
+/* Slideshow container */
+.slideshow-container {
+	position: relative; /* Bezugselement für die absolut positionierten Vor- und Zurück-Button */
+	overflow: hidden;
+}
+
+/* Alle Folien werden anfänglich ausgeblendet */
+.mySlides {
+	display: none;
+	animation-name: fading;	 /*Der Name der Animation, die auf das Element mySlides angewendet werdne soll*/
+	animation-duration: 4s; 
+	animation-timing-function: ease-in-out;
+}
+
+/* Fading der einzelnen Folien
+   Eine Animation wird immer mittels des kexwords @keyframes definiert, gefolgt von einem frei wählbaren Namen für die Animation. Ferner enthält die Defintion der Animation den Anfangs- und den Endwert derjeingen Eigenschaft, die animiert werden soll. Die Zuweisung einer Anmiation zu einem bestimmten Element erfolgt beim Element selbst mittels der property animation-name (s.o)*/
+
+@keyframes fading {        
+	from {opacity:0.4}
+	to {opacity: 1}
+}
+
+.slideshow-image {
+	width: 100%;
+	height: 70vh;
+	line-height: 1;
+	object-fit: cover; /*sorgt dafür, dass das Bild abgeschnitten wird */
+}
+
+/* Bildunterschriften */
+.caption {
+	font-size: 18px;
+	color: #373128;
+	position: absolute;
+	width: 100%;
+	text-align: center;
+	line-height: 1;
+}
+
+/* Vor- und Zurück-Button*/
+
+.prev,
+.next {
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	color: #fff;
+	font-weight: bold;
+	font-size: 24px;
+	text-decoration: none;
+	cursor: pointer;
+}
+
+.prev:hover,
+.next:hover,
+.prev:active,
+.next:active {
+	text-decoration: none;
+	color: #19421a;
+}
+/* positioniert den Zurück-Button rechts, den Vor-Button links */
+.prev {
+	left: 10px;
+}
+
+.next {
+	right: 10px;
+}
+
+/* =========== Blog ============== */
+.page-title {
+	text-align: center;
+}
+
+.category li {
+	list-style: none;
+	display: inline-block;
+}
+
+.post-image img,
+.post-image-gallery {
+	max-width: 100%;
+}
+
+.post-image-gallery {
+	margin-bottom: 50px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+hr {
+	border: none;
+	border-top: 1px solid #333;
+	width: 100%;
+}
+
+h1 {
+	font-size: 56px;
+	color: #19421a;
+	font-family: 'Fredericka the Great', cursive;
+	font-weight: 500;
+}
+
+h2 {
+	color: #373128;
+	font-family: 'Fredericka the Great', cursive;
+	font-size: 24px;
+}
+
+nav {
+	font-family: 'Fredericka the Great', cursive;
+}
+
